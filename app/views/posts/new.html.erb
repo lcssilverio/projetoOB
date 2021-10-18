@@ -1,0 +1,27 @@
+<%= form_for Post.new do |form| %>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <%= form.label :titulo %> 
+                <%= form.text_field :titulo, class:"form-control" %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <%= form.label :texto %>  
+                <%= form.text_area :texto, class:"form-control", rows:4 %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <%= form.label :autor %>  
+                <%= form.text_field :autor, class:"form-control" %>
+            </div>
+        </div>
+    </div>
+    <%= form.submit "Postar", class:"btn btn-primary" %>
+<% end %>
