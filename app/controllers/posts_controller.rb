@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        @tema = Tema.all
     end
 
     def create
