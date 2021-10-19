@@ -23,5 +23,8 @@
             </div>
         </div>
     </div>
-    <%= form.submit "Postar", class:"btn btn-primary" %>
+    <div class="form-actions">
+        <%= form.submit "Postar", class:"btn btn-primary" %>
+        <%= link_to 'cancel', root_path, :class => 'btn' %>
+    </div>
 <% end %>

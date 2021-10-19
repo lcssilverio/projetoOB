@@ -9,4 +9,16 @@ class PostsController < ApplicationController
         Post.create post
         redirect_to root_path
     end
+
+    def destroy
+        id = params[:id]
+        Post.destroy id
+        redirect_to root_path        
+    end
+
+    def busca
+        @titulo = params[:titulo]
+        @posts = Post.where "titulo like ?", "%#{@titulo}%"
+    end
+
 end
