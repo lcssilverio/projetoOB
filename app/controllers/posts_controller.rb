@@ -4,10 +4,19 @@ class PostsController < ApplicationController
         @posts = Post.order(titulo: :desc)
     end
 
+    def new
+        @post = Post.new
+    end
+
     def create
-        post = params.require(:post).permit(:titulo, :texto, :autor)
-        Post.create post
-        redirect_to root_path
+        valores = params.require(:post).permit(:titulo, :texto, :autor)
+        @post = Post.new valores
+        if @post.save
+            flash[:notice] = "Post criado!"
+            redirect_to root_path
+        else 
+            render :new
+        end
     end
 
     def destroy

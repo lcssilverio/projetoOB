@@ -1,4 +1,10 @@
-<%= form_for Post.new do |form| %>
+<% @post.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger" role="alert">
+        <%= msg %>
+    </div>
+<% end %>
+
+<%= form_for @post do |form| %>
     <div class="row">
         <div class="col-sm-8">
             <div class="form-group">
