@@ -3,5 +3,5 @@ class Post < ApplicationRecord
     validates :texto, presence: true
     validates :autor, presence: true
 
-    belongs_to :tema
+    belongs_to :tema, optional: true
 end

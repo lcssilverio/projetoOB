@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        valores = params.require(:post).permit(:titulo, :texto, :autor)
+        valores = params.require(:post).permit(:titulo, :texto, :tema_id, :autor)
         @post = Post.new valores
         if @post.save
             flash[:notice] = "Post criado!"
@@ -29,6 +29,26 @@ class PostsController < ApplicationController
     def busca
         @titulo = params[:titulo]
         @posts = Post.where "titulo like ?", "%#{@titulo}%"
+    end
+
+    def edit
+        id = params[:id]
+        @post = Post.find(id)
+        @tema = Tema.all
+        render :new
+    end
+
+    def update
+        id = params[:id]
+        @post = Post.find(id)
+        valores = params.require(:post).permit(:titulo, :texto, :tema_id, :autor)
+        if @post.update valores
+            flash[:notice] = "Post atualizado!"
+            redirect_to root_path
+        else
+            render :new
+            @tema = Tema.all
+        end
     end
 
 end
