@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+    before_action :set_post, only: [:edit, :update, :destroy]
+
     def index 
         @posts = Post.order(titulo: :desc)
     end
@@ -10,19 +12,18 @@ class PostsController < ApplicationController
     end
 
     def create
-        valores = params.require(:post).permit(:titulo, :texto, :tema_id, :autor)
-        @post = Post.new valores
+        @post = Post.new posts_params
         if @post.save
             flash[:notice] = "Post criado!"
             redirect_to root_path
-        else 
-            render :new
+        else
+            renderiza :new
         end
     end
 
     def destroy
-        id = params[:id]
-        Post.destroy id
+        @post.destroy
+        flash[:notice] = "Post removido!"
         redirect_to root_path        
     end
 
@@ -32,23 +33,30 @@ class PostsController < ApplicationController
     end
 
     def edit
-        id = params[:id]
-        @post = Post.find(id)
-        @tema = Tema.all
-        render :new
+        renderiza :edit
     end
 
     def update
-        id = params[:id]
-        @post = Post.find(id)
-        valores = params.require(:post).permit(:titulo, :texto, :tema_id, :autor)
-        if @post.update valores
+        if @post.update posts_params
             flash[:notice] = "Post atualizado!"
             redirect_to root_path
         else
-            render :new
-            @tema = Tema.all
+            renderiza :edit
         end
     end
 
+    private
+
+    def posts_params
+        params.require(:post).permit(:titulo, :texto, :tema_id, :autor)
+    end
+
+    def set_post
+        @post = Post.find(params[:id])   
+    end
+
+    def renderiza(view)
+        @tema = Tema.all
+        render view
+    end
 end

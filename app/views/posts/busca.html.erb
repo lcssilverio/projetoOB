@@ -1,10 +1,1 @@
-<% @posts.each do |post| %>
-	<h3>Titulo:</h3>
-	<p><%= post.titulo %></p>
-	<h3>Texto:</h3>
-	<p><%= post.texto %></p>
-	<h4>Autor: </h4>
-	<p><%= post.autor %></p>
-
-	<%= button_to 'Remover', post, method: :delete, class:"btn btn-danger", data: {confirm: "Tem certeza que deseja remover? ?"} %>
-<% end %>
+<%= render 'post' %>
