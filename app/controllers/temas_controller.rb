@@ -26,7 +26,7 @@ class TemasController < ApplicationController
 
     respond_to do |format|
       if @tema.save
-        format.html { redirect_to @tema, notice: "Tema was successfully created." }
+        format.html { redirect_to temas_url, notice: "Tema was successfully created." }
         format.json { render :show, status: :created, location: @tema }
       else
         format.html { render :new, status: :unprocessable_entity }
