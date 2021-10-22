@@ -2,8 +2,8 @@
 
 <p>
   <strong>Nome:</strong>
-  <%= @tema.nome %>
+  <%= render @posts_por_temas %>
 </p>
 
-<%= link_to 'Edit', edit_tema_path(@tema) %> |
-<%= link_to 'Back', temas_path %>
+<%= link_to 'Edit', edit_tema_path(@tema), class:"btn btn-default" %> |
+<%= link_to 'Back', temas_path, class:"btn btn-default" %>

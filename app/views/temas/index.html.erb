@@ -14,9 +14,9 @@
     <% @temas.each do |tema| %>
       <tr>
         <td><%= tema.nome %></td>
-        <td><%= link_to 'Show', tema %></td>
-        <td><%= link_to 'Edit', edit_tema_path(tema) %></td>
-        <td><%= link_to 'Destroy', tema, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver posts', tema, class:"btn btn-default" %></td>
+        <td><%= link_to 'Editar', edit_tema_path(tema), class:"btn btn-default" %></td>
+        <td><%= link_to 'Remover', tema, method: :delete,class:"btn btn-default", data: { confirm: 'Tem certeza que deseja remover?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Tema', new_tema_path %>
+<%= link_to 'Criar Tema', new_tema_path, class:"btn btn-default" %>

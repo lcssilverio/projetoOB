@@ -8,6 +8,7 @@ class TemasController < ApplicationController
 
   # GET /temas/1 or /temas/1.json
   def show
+    @posts_por_temas = Post.where("tema_id = ?", params[:id])
   end
 
   # GET /temas/new

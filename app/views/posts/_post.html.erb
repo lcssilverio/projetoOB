@@ -1,19 +1,17 @@
-<% @posts.each do |post| %>
-	<div class="card post-card" style="padding-bottom: 14px; padding-left: 10px; border: 1px solid; border-radius:6px; margin: 12px 0;">
-		<div class="card-body">
-			<div class="row">
-				<div class="col-md-11">
-					<h2 class='card-title mb-1 text-dark'><%= post.titulo %></h2>
-					<p class="text-secudary mb-0" style="word-break: break-all; max-width: 900px; font-size: 18px; margin: 12px 0;"><%= post.texto %></p>
-					<p style="font-size: 16px;">Autor: <%= post.autor %></p>
-					<h5>Tema: <%= post.tema.nome %></h5>
-					
-					<div class="form-actions">
-						<%= link_to "Editar", edit_post_path(post), class:"btn btn-default" %>
-						<%= button_to 'Remover', post, method: :delete, class:"btn", data: {confirm: "Tem certeza que deseja remover?"} %>
-					</div>
+<div class="card post-card" style="padding-bottom: 14px; padding-left: 10px; border: 1px solid; border-radius:6px; margin: 12px 0;">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-11">
+				<h2 class='card-title mb-1 text-dark'><%= post.titulo %></h2>
+				<p class="text-secudary mb-0" style="word-break: break-all; max-width: 900px; font-size: 18px; margin: 12px 0;"><%= post.texto %></p>
+				<p style="font-size: 16px;">Autor: <%= post.autor %></p>
+				<h5>Tema: <%= post.tema.nome %></h5>
+				
+				<div class="form-actions">
+					<%= link_to "Editar", edit_post_path(post), class:"btn btn-default" %>
+					<%= button_to 'Remover', post, method: :delete, class:"btn", data: {confirm: "Tem certeza que deseja remover?"} %>
 				</div>
 			</div>
 		</div>
 	</div>
-<% end %>
+</div>
