@@ -10,19 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_19_183543) do
+ActiveRecord::Schema.define(version: 2021_10_15_133141) do
 
   create_table "posts", force: :cascade do |t|
     t.string "titulo"
     t.text "texto"
     t.string "autor"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "tema_id"
-  end
-
-  create_table "temas", force: :cascade do |t|
-    t.string "nome"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -7,7 +7,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @tema = Tema.all
   end
 
   def create
@@ -48,7 +47,7 @@ class PostsController < ApplicationController
   private
 
   def posts_params
-    params.require(:post).permit(:titulo, :texto, :tema_id, :autor)
+    params.require(:post).permit(:titulo, :texto, :autor)
   end
 
   def set_post
@@ -56,7 +55,6 @@ class PostsController < ApplicationController
   end
 
   def renderiza(view)
-    @tema = Tema.all
     render view
   end
 end

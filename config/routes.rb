@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :temas
-  root to: "posts#index"
-  resources :posts, only: [:new, :create, :destroy, :edit, :update]
-  get "posts/busca", to: "posts#busca", as: :busca_post
+  root to: 'posts#index'
+  resources :posts, only: %i[new create destroy edit update]
+  get 'posts/busca', to: 'posts#busca', as: :busca_post
 end
