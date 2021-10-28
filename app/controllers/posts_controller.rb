@@ -4,6 +4,13 @@ class PostsController < ApplicationController
     @posts = Post.order(titulo: :desc)
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @commentable = @post
+    @comments = @commentable.comments
+    @comment = Comment.new
+  end
+
   def new
     @post = Post.new
   end
@@ -16,12 +23,6 @@ class PostsController < ApplicationController
     else
       rendering :new
     end
-  end
-
-  def destroy
-    @post.destroy
-    flash[:notice] = 'Post removido!'
-    redirect_to root_path
   end
 
   def busca
@@ -40,6 +41,12 @@ class PostsController < ApplicationController
     else
       rendering :edit
     end
+  end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = 'Post removido!'
+    redirect_to root_path
   end
 
   private

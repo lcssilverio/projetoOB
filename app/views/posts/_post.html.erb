@@ -6,8 +6,11 @@
 				<p class="text-secudary mb-0" style="word-break: break-all; max-width: 900px; font-size: 18px; margin: 12px 0;"><%= post.texto %></p>
 				<p style="font-size: 16px;">Autor: <%= post.autor %></p>
 				
-				<%= link_to "Editar", edit_post_path(post), class:"btn btn-default" %> | 
+				
+				<%= link_to "Editar", edit_post_path(post), class:"btn btn-default" %>
 				<%= button_to 'Remover', post, method: :delete, class:"btn", data: {confirm: "Tem certeza que deseja remover?"} %>
+				<%= link_to "Ver comentarios", post_path(post), class:"btn btn-default" %>
+				
 			</div>
 		</div>
 	</div>
