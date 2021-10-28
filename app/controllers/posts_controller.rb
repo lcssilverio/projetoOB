@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
-
   def index
     @posts = Post.order(titulo: :desc)
   end
@@ -15,7 +14,7 @@ class PostsController < ApplicationController
       flash[:notice] = 'Post criado!'
       redirect_to root_path
     else
-      renderiza :new
+      rendering :new
     end
   end
 
@@ -28,11 +27,10 @@ class PostsController < ApplicationController
   def busca
     @titulo = params[:titulo]
     @posts = Post.where 'titulo like ?', "%#{@titulo}%"
-    # ELASTIC SEARCH
   end
 
   def edit
-    renderiza :edit
+    rendering :edit
   end
 
   def update
@@ -40,7 +38,7 @@ class PostsController < ApplicationController
       flash[:notice] = 'Post atualizado!'
       redirect_to root_path
     else
-      renderiza :edit
+      rendering :edit
     end
   end
 
@@ -52,9 +50,5 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def renderiza(view)
-    render view
   end
 end
