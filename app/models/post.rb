@@ -3,5 +3,5 @@ class Post < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  belongs_to :tags, optional: true
+  has_and_belongs_to_many :tags
 end
