@@ -12,10 +12,13 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new comments_params
     if @comment.save
-      flash[:notice] = 'Comentário adicionado com sucesso!'
-      redirect_to @commentable
+      respond_to do |format|
+        format.js
+      end
+      #flash[:notice] = 'Comentário adicionado com sucesso!'
+      #redirect_to @commentable
     else
-      rendering :new
+      #rendering :new
     end
   end
 
